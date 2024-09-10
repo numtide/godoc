@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
+
+	"golang.org/x/sync/errgroup"
 
 	"github.com/charmbracelet/log"
 	"github.com/numtide/godoc/pkg/markdown"
@@ -37,20 +40,31 @@ var rootCmd = &cobra.Command{
 		sourceDir := args[0]
 		log.Infof("processing Go files in: %s", sourceDir)
 
-		return filepath.Walk(args[0], func(path string, info os.FileInfo, err error) error {
+		eg := errgroup.Group{}
+		eg.SetLimit(runtime.NumCPU())
+
+		if err := filepath.Walk(args[0], func(path string, info os.FileInfo, err error) error {
 			if !strings.HasSuffix(path, ".go") {
 				// skip
 				return nil
 			}
 
-			log.Infof("processing file: %s", path)
-			data, err := parse.File(path)
-			if err != nil {
-				return fmt.Errorf("failed to parse file: %w", err)
-			}
+			eg.Go(func() error {
+				log.Infof("processing file: %s", path)
+				data, err := parse.File(path)
+				if err != nil {
+					return fmt.Errorf("failed to parse file: %w", err)
+				}
 
-			return markdown.Write(outDir, data)
-		})
+				return markdown.Write(outDir, data)
+			})
+			return nil
+		}); err != nil {
+			return fmt.Errorf("failed to walk source directory: %w", err)
+		}
+
+		// wait for processing to complete
+		return eg.Wait()
 	},
 }
 
