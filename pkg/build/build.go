@@ -3,7 +3,7 @@ package build
 
 var (
 	// Name is the program name, typically set via Nix to match the derivation's `pname`.
-	Name = "nixos-facter"
+	Name = "godoc"
 	// Version is the program version, typically set via Nix to match the derivation's `version`.
 	Version = "v0.0.0+dev"
 )

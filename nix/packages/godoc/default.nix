@@ -6,11 +6,10 @@
   # deadnix: skip
   inputs,
   perSystem,
-  system,
   pkgs,
   pname,
   ...
-} @ args: let
+}: let
   inherit (pkgs) go lib;
   fs = lib.fileset;
 in
@@ -40,14 +39,14 @@ in
     ldflags = [
       "-s"
       "-w"
-      "-X github.com/numtide/gomarkdoc/pkg/build.Name=${pname}"
-      "-X github.com/numtide/gomarkdoc/pkg/build.Version=v${version}"
+      "-X github.com/numtide/godoc/pkg/build.Name=${pname}"
+      "-X github.com/numtide/godoc/pkg/build.Version=v${version}"
     ];
 
     meta = with lib; {
-      description = "gomarkdoc: Go Doc generation in Markdown format";
-      homepage = "https://github.com/numtide/gomarkdoc";
+      description = "godoc: Custom Go doc generation";
+      homepage = "https://github.com/numtide/godoc";
       license = licenses.mit;
-      mainProgram = "gomarkdoc";
+      mainProgram = "godoc";
     };
   }

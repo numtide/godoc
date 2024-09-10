@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/numtide/gomarkdoc/cmd"
+	"github.com/numtide/godoc/cmd"
 )
 
 func main() {

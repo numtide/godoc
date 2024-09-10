@@ -3,7 +3,7 @@
   pkgs,
   ...
 }:
-perSystem.self.gomarkdoc.overrideAttrs (old: {
+perSystem.self.godoc.overrideAttrs (old: {
   GOROOT = "${old.go}/share/go";
   nativeBuildInputs =
     old.nativeBuildInputs

@@ -1,0 +1,15 @@
+# {{ .Name }}
+
+{{ .Doc }}
+
+## Fields
+
+{{ range .Fields }}
+### `{{ .Name }}`
+
+{{ .Doc }}
+
+| Type | JSON |
+| ---- | -----------|
+| {{ typeLink .Type }} | `{{ jsonTag .Tags }}` |
+{{ end }}

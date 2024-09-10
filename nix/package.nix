@@ -1,1 +1,1 @@
-{perSystem, ...}: perSystem.self.gomarkdoc
+{perSystem, ...}: perSystem.self.godoc
