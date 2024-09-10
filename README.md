@@ -4,7 +4,7 @@
 > [!NOTE]
 > **Status: alpha**
 
-`godoc` is a custom documentation generator for go projects. Currently focused on [Markdown], it may expand into other areas such as JSON schemas.
+`godoc` is a custom documentation generator for [Go] projects. Currently focused on [Markdown], it may expand into other areas such as JSON schemas.
 
 <!-- prettier-ignore -->
 > [!WARNING]
@@ -57,3 +57,4 @@ We'd love to hear from you.
 [MIT]: ./LICENSE
 [Numtide]: https://numtide.com
 [Markdown]: https://www.markdownguide.org/
+[Go]: https://go.dev/
