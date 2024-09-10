@@ -20,10 +20,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hwinfo.url = "github:numtide/hwinfo";
-    hwinfo.inputs.nixpkgs.follows = "nixpkgs";
-    hwinfo.inputs.systems.follows = "systems";
-    hwinfo.inputs.blueprint.follows = "blueprint";
   };
 
   # Keep the magic invocations to minimum.
