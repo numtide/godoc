@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
-	"github.com/charmbracelet/log"
+	"charm.land/log/v2"
 	"github.com/numtide/godoc/pkg/markdown"
 	"github.com/numtide/godoc/pkg/parse"
 	"github.com/spf13/cobra"
